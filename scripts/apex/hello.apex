@@ -40,8 +40,9 @@ https://www.youtube.com/watch?v=wciBI5rQvHY
 Fearless Date and Time Formulas
 
 
-
-------------------DATE-----------------------
+    ------------------------------------------------------------------------------------------------------
+    --------------------------------------------DATE------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------
 
 Date newDate = Date.newInstance(2022, 01, 01);
 System.debug(newDate);
@@ -237,8 +238,98 @@ for(AccountHistory ah : ahlist) {
 
 ------------------------------------------------------------------------------------------------------
 
-
 year()
 Returns the year component of a Date
 System.debug(Date.newInstance(2022,01,01).year());
 USER_DEBUG|[1]|DEBUG|2022
+
+
+
+
+    ------------------------------------------------------------------------------------------------------
+    --------------------------------------------TIME------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------
+
+
+Time myTime = Time.newInstance(22,50,3,4);
+System.debug(myTime);
+|USER_DEBUG|[2]|DEBUG|22:50:03.004Z
+
+------------------------------------------------------------------------------------------------------
+
+addHours(additionalHours)
+Adds the specified number of hours to a Time.
+
+Time myTime = Time.newInstance(22,50,0,0);
+System.debug(myTime.addHours(3));
+USER_DEBUG|[2]|DEBUG|01:50:00.000Z
+------------------------------------------------------------------------------------------------------
+
+
+addMilliseconds(additionalMilliseconds)
+Adds the specified number of milliseconds to a Time.
+Time myTime = Time.newInstance(22,50,0,0);
+System.debug(myTime.addMilliseconds(3));
+USER_DEBUG|[2]|DEBUG|22:50:00.003Z
+------------------------------------------------------------------------------------------------------
+
+
+addMinutes(additionalMinutes)
+Adds the specified number of minutes to a Time.
+
+Time myTime = Time.newInstance(22,50,0,0);
+System.debug(myTime.addMinutes(3));
+USER_DEBUG|[2]|DEBUG|22:53:00.000Z
+------------------------------------------------------------------------------------------------------
+
+
+addSeconds(additionalSeconds)
+Adds the specified number of seconds to a Time.
+
+Time myTime = Time.newInstance(22,50,17,9);
+System.debug(myTime.addSeconds(3));
+USER_DEBUG|[2]|DEBUG|22:50:03.000Z
+------------------------------------------------------------------------------------------------------
+
+
+hour()
+Returns the hour component of a Time.
+
+Time myTime = Time.newInstance(22,50,17,9);
+System.debug(myTime.hour());
+USER_DEBUG|[2]|DEBUG|22
+------------------------------------------------------------------------------------------------------
+
+
+millisecond()
+Returns the millisecond component of a Time.
+
+Time myTime = Time.newInstance(22,50,17,9);
+System.debug(myTime.millisecond());
+USER_DEBUG|[2]|DEBUG|9
+------------------------------------------------------------------------------------------------------
+
+
+minute()
+Returns the minute component of a Time.
+
+Time myTime = Time.newInstance(22,50,17,9);
+System.debug(myTime.minute());
+USER_DEBUG|[2]|DEBUG|50
+------------------------------------------------------------------------------------------------------
+
+second()
+Returns the second component of a Time.
+
+Time myTime = Time.newInstance(22,50,17,9);
+System.debug(myTime.second());
+USER_DEBUG|[2]|DEBUG|17
+------------------------------------------------------------------------------------------------------
+
+
+newInstance(hour, minutes, seconds, milliseconds)
+Constructs a Time from Integer representations of the specified hour, minutes, seconds, and milliseconds. (UTC is assumed.)
+
+Time myTime = Time.newInstance(22,50,17,9);
+System.debug(myTime);
+USER_DEBUG|[2]|DEBUG|22:50:17.009Z
