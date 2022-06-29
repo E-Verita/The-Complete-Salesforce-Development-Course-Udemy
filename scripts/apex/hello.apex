@@ -333,3 +333,38 @@ Constructs a Time from Integer representations of the specified hour, minutes, s
 Time myTime = Time.newInstance(22,50,17,9);
 System.debug(myTime);
 USER_DEBUG|[2]|DEBUG|22:50:17.009Z
+
+
+
+
+
+    ------------------------------------------------------------------------------------------------------
+    --------------------------------------------DATETIME------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------
+
+
+List <Case> cList = [SELECT Id, SuppliedName, CreatedDate, ClosedDate  FROM Case LIMIT 20];
+for (Case c : cList){
+    System.debug(c);
+}
+
+DateTime myDateTime = DateTime.newInstance(2022, 06, 29, 19, 21, 15);
+System.debug(myDateTime);
+USER_DEBUG|[2]|DEBUG|2022-06-29 18:21:15
+
+Date myDate = Date.newInstance(2022,06,29);
+System.debug(myDate);
+USER_DEBUG|[2]|DEBUG|2022-06-29 00:00:00
+
+Time myTime = Time.newInstance(19,24,30,15);
+System.debug(myTime);
+USER_DEBUG|[5]|DEBUG|19:24:30.015Z
+
+DateTime myDateTime = DateTime.newInstance(myDate, myTime);
+System.debug(myDateTime);
+USER_DEBUG|[7]|DEBUG|2022-06-29 18:24:30
+
+DateTime myDateTime = DateTime.now();
+System.debug(myDateTime);
+USER_DEBUG|[2]|DEBUG|2022-06-29 16:26:33   //19:26
+
