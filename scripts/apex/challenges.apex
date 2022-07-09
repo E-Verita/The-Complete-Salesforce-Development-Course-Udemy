@@ -133,7 +133,8 @@ while (numbPrinted<20){
 }
 
 --------------------------------------------------------------------------------------------------------------------------------------
-Challenge 5 - The pattern Challenge
+/*         Challenge 5 - The pattern Challenge
+
 /*Integer n=5; - rows and columns
 *
 **
@@ -151,7 +152,49 @@ newLine=newLine+star;
 }
 
 -------------------------------
+/*      SOQL Challenge
 
+Write SOQL query to retrieve all Contacts from SF org. Results should show Contact Name, Title, Phone and Email 
+Modify SOQL query to retrieve only those contacts with title 'VP Technology'
+Modify SOQL and add another field 'Departement' in the results. This field should be in the 2nd field in the result
+Modify SOQL, retrieve all results satisfying step 2 condition and has departement value as 'Finance'
+Modify SOQL, include all SVP and VP in your search results. Make sure your result still meets step 4 condition
+Sort results by name in descending order
+Limit search result to only 3
+*/
+
+SELECT Name, Title, Phone, Email FROM Contact
+SELECT Name, Title, Phone, Email FROM Contact WHERE Title = 'VP, Technology'
+SELECT Name, Department, Title, Phone, Email FROM Contact WHERE Title = 'VP, Technology'
+SELECT Name, Department, Title, Phone, Email FROM Contact WHERE Title = 'VP, Technology' AND Department = 'Finance'
+SELECT Name, Department, Title, Phone, Email FROM Contact WHERE Title LIKE '%VP%' AND Department = 'Finance'
+SELECT Name, Department, Title, Phone, Email FROM Contact WHERE Title LIKE '%VP%' AND Department = 'Finance' ORDER BY Name DESC
+SELECT Name, Department, Title, Phone, Email FROM Contact WHERE Title LIKE '%VP%' AND Department = 'Finance' ORDER BY Name DESC LIMIT 3
+
+
+----------------------------
+
+
+/*  SOQL Challenge 2
+
+
+Retrieve Name, Department and Title of all contacts
+Retrieve all Cases (CaseNumber, Subject) raised by the contact
+Get parent Account's Name, Rating for each Contact
+Make sure Account fields are the initial columns in results
+Retrieve only those records where Account Rating is Hot
+Sort results by Contact Name
+Only retrieve open cases (use IsClosed Checkbox field value)
+Add one more filter condition, Contact Department must be equals to 'Technology' */
+
+SELECT Account.Name, Account.Rating, Name, Department, Title, (Select CaseNumber, Subject FROM Cases WHERE IsClosed=false) FROM Contact WHERE Account.Rating='Hot' AND Department='Technology' ORDER BY Name
+SELECT Name, Department, Title FROM Contact
+SELECT Name, Department, Title, (SELECT CaseNumber, Subject FROM Cases) FROM Contact
+SELECT Name, Department, Title, (SELECT CaseNumber, Subject FROM Cases), Account.Name, Account.Rating FROM Contact
+SELECT Account.Name, Account.Rating , Name, Department, Title, (SELECT CaseNumber, Subject FROM Cases) FROM Contact 
+SELECT Account.Name, Account.Rating , Name, Department, Title, (SELECT CaseNumber, Subject FROM Cases) FROM Contact WHERE Account.Rating = 'Hot'
+SELECT Account.Name, Account.Rating , Name, Department, Title, (SELECT CaseNumber, Subject FROM Cases) FROM Contact WHERE Account.Rating = 'Hot' ORDER BY Name
+SELECT Account.Name, Account.Rating , Name, Department, Title, (SELECT CaseNumber, Subject FROM Cases WHERE IsClosed = FALSE) FROM Contact WHERE Account.Rating = 'Hot' AND Department = 'Technology' ORDER BY Name
 
 
 
